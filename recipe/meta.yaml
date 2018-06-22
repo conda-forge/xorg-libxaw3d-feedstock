@@ -1,9 +1,9 @@
 {% set xorg_name = "libXaw3d" %}
 {% set xorg_category = "lib" %}
 {% set name = "xorg-" ~ xorg_name %}
-{% set version = "1.6.2" %}
+{% set version = "1.6.3" %}
 # NOTE! This is the gzip! Most recent bz2 file causes mysterious problems on Python 2.7.
-{% set sha256 = "847dab01aeac1448916e3b4edb4425594b3ac2896562d9c7141aa4ac6c898ba9" %}
+{% set sha256 = "9f42b409e5a4a0d7a2c94595b31d17fc078e5e307d14389dbc396754c3a01fcc" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
