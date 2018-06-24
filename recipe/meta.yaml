@@ -2,8 +2,7 @@
 {% set xorg_category = "lib" %}
 {% set name = "xorg-" ~ xorg_name %}
 {% set version = "1.6.3" %}
-# NOTE! This is the gzip! Most recent bz2 file causes mysterious problems on Python 2.7.
-{% set sha256 = "9f42b409e5a4a0d7a2c94595b31d17fc078e5e307d14389dbc396754c3a01fcc" %}
+{% set sha256 = "2dba993f04429ec3d7e99341e91bf46be265cc482df25963058c15f1901ec544" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -12,16 +11,12 @@ package:
 
 source:
   fn: {{ xorg_name }}-{{ version }}.tar.gz
-  url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.gz
+  url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.bz2
   sha256: {{ sha256 }}
 
 build:
   number: 0
   detect_binary_files_with_prefix: true
-  features:
-    - vc9  # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py>=35]
 
 requirements:
   build:
@@ -32,11 +27,7 @@ requirements:
     - m2w64-toolchain  # [win]
     - pkg-config  # [not win]
     - posix  # [win]
-    - python  # [win]
     - toolchain
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
     - pthread-stubs
     - xorg-libx11 1.6.*
     - xorg-libxext 1.3.*
@@ -44,9 +35,6 @@ requirements:
     - xorg-libxt 1.1.*
     - xorg-util-macros
   run:
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
     - xorg-libx11 1.6.*
     - xorg-libxext 1.3.*
     - xorg-libxmu 1.1.*
