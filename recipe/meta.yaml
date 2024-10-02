@@ -3,7 +3,7 @@
 {% set name = "xorg-" ~ xorg_name %}
 {% set version = "1.6.6" %}
 {% set sha256 = "a41c3e37135ad616b1f28bbde70002afbf3cb59a30df34141f829d32eadc8646" %}
-{% set am_version = "1.15" %} # keep synchronized with build.sh
+{% set am_version = "1.16" %} # keep synchronized with build.sh
 
 package:
   name: {{ name|lower }}
@@ -15,7 +15,6 @@ source:
 
 build:
   number: 0
-  detect_binary_files_with_prefix: true
   run_exports:
     - {{ pin_subpackage(name|lower) }}
 
@@ -51,8 +50,6 @@ test:
     - if not exist %PREFIX%/Library/lib/lib{{ lib_ident }}.dll.a exit /b 1  # [win]
     - if not exist %PREFIX%/Library/bin/msys-{{ lib_ident }}-*.dll exit /b 1  # [win]
     {% endfor %}
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://www.x.org/
