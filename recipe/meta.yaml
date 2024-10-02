@@ -1,8 +1,8 @@
 {% set xorg_name = "libXaw3d" %}
 {% set xorg_category = "lib" %}
 {% set name = "xorg-" ~ xorg_name %}
-{% set version = "1.6.3" %}
-{% set sha256 = "2dba993f04429ec3d7e99341e91bf46be265cc482df25963058c15f1901ec544" %}
+{% set version = "1.6.6" %}
+{% set sha256 = "a41c3e37135ad616b1f28bbde70002afbf3cb59a30df34141f829d32eadc8646" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -10,12 +10,11 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ xorg_name }}-{{ version }}.tar.gz
-  url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.bz2
+  url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.xz
   sha256: {{ sha256 }}
 
 build:
-  number: 1002
+  number: 0
   detect_binary_files_with_prefix: true
 
 requirements:
